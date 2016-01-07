@@ -1449,6 +1449,14 @@ If you don't pass in a data file on construction, units are gotten from a hardco
 
 handle numbers with special characters in them, like '6^2' and '2e3'.  written by mwmiller.
 
+=head2 temperature_get_factor()
+
+This sub handles converting any value for any temperature scale to the equivalent fahrenheit value for later conversion to some other unit.
+
+=head2 precision()
+
+This sub takes the output of a conversion and rounds it to the specified precision.  It is set by default to 3.
+
 =head1 AUTHOR
 
 bradley andersen, C<< <bradley at pvnp.us> >>
