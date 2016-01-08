@@ -12,7 +12,7 @@ use Switch;
 
 our @EXPORT_OK = qw(convert get_units);
 
-our $VERSION           = '0.032';
+our $VERSION           = '0.0322';
 our $DEFAULT_PRECISION = 3;
 
 has data_file => ( is => 'lazy', );
@@ -1344,9 +1344,9 @@ Convert::Pluggable - convert between various units of measurement
 
 =head1 VERSION
 
-Version 0.032
+Version 0.0322
 
-Authoritative version is always here: https://github.com/elohmrow/Convert-Pluggable
+Authoritative version is always here: L<https://github.com/elohmrow/Convert-Pluggable>
 
 =head1 SYNOPSIS
 
@@ -1357,9 +1357,7 @@ convert between various units of measurement
 You my use this module standalone prior to v0.031; there the units are all hard-coded into the module:
 
         use Convert::Pluggable;
-
         my $c = new Convert::Pluggable()
-
         my $c->convert( { 'factor' => '5', 'from_unit' => 'feet', 'to_unit' => 'inches', 'precision' => '3', });
 
 Starting in v0.031 you may still use this module stand-alone, but you may optionally provide as a constructor argument 
@@ -1368,30 +1366,15 @@ for an example Dancer2 script.  See data/units.json for an example of a valid js
 
 See t/Convert-Pluggable.t for many more example uses.
 
-See https://ddh5.duckduckgo.com/?q=10000+minutes+in+microseconds for examples of test uses
+See L<https://ddh5.duckduckgo.com/?q=10000+minutes+in+microseconds> for examples of test uses
 
-See https://github.com/elohmrow/Convert-Pluggable for the most recent version
-
-=head1 BUILDING
-
-If you don't find me on CPAN, do the following:
-    
-=over 4
-
-=item *
-
-git clone https://github.com/elohmrow/Convert-Pluggable
-cd Convert-Pluggable
-perl Makefile.PL
-make
-make test
-make install
-
-=back
+See L<https://github.com/elohmrow/Convert-Pluggable> for the most recent version
 
 =head1 EXPORT
 
-convert
+=head2 convert()
+
+=head2 get_units()
 
 =head1 SUBROUTINES/METHODS
 
@@ -1461,16 +1444,6 @@ This sub takes the output of a conversion and rounds it to the specified precisi
 
 bradley andersen, C<< <bradley at pvnp.us> >>
 
-=head1 POSSIBLE BUGS (RE-INVESTIGATION NEEDED)
-
-=over 4
-
-=item *
-
-add back in guard against things like: '10 inches to 5 cm'
-
-=back
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
@@ -1479,17 +1452,9 @@ You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
+=item * RT: CPAN's request tracker (report / view bugs here)
 
 L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Convert::Pluggable>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Convert::Pluggable>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Convert::Pluggable>
 
 =item * Search CPAN
 
@@ -1526,11 +1491,7 @@ all args to functions should be hash refs!
  
 =item *
 
-add more unit types (digital, cooking, etc.)
-
-=item *
-
-add roman numeral converter
+add more unit types (digital, cooking, roman numeral, etc.)
 
 =item *
 
@@ -1538,7 +1499,13 @@ add main units to aliases (easier for searching with things like redis)
 
 =item *
 
+add back in guard against things like: '10 inches to 5 cm'
+
+=item *
+
 support native perl numbers in queries: e.g.: '12.34e-56 cm to mm'
+support for various number formats (e.g., international)?
+bignum support?
 
 =item *
 
@@ -1546,38 +1513,11 @@ don't show decimals when integer answer? e.g.: '12.000' should be '12' (this may
 
 =item *
 
-add more tests and better test output
-
-=over 4
-
-=item *
-
-'1 year to months'
-
-=item *
-
-'16 years to months'
-
-=item *
-
-'12.34e-56 cm to mm'
-
-=item *
-
-'10 inches to 5 cm' should not try
-
-=back
-
-=item *
-
 what happens when two units have the same notation? (e.g., 'kilometer' and 'kilobyte' both can use 'K')
 
 =item *
 
-does convert work when ($from eq $to) ?
-
-=item *
-
+L<https://github.com/duckduckgo/zeroclickinfo-goodies/issues/1767>
 return undef when we find a unit/alias in more than one type
 ^ what if it's ok? e.g., "oz" can be a unit of both "mass" and "volume"
 
@@ -1587,19 +1527,7 @@ perl critic?
 
 =item *
 
-https://github.com/duckduckgo/zeroclickinfo-goodies/issues/1767
-
-=item *
-
 Convert to p6
-
-=item *
-
-support for various number formats?
-
-=item *
-
-bignum support?
 
 =item *
 
