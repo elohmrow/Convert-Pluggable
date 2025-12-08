@@ -9,15 +9,20 @@ provider "aws" {
 resource "aws_instance" "my_web_app" {
   ami = "ami-005e54dee72cc1d00"
 
-  instance_type = "m3.xlarge" # <<<<<<<<<< Try changing this to m5.xlarge to compare the costs
+  instance_type = "m6g.xlarge" # graviton
 
   tags = {
-    Environment = "production"
+    Environment = "Prod"
     Service = "web-app"
   }
 
   root_block_device {
     volume_size = 1000 # <<<<<<<<<< Try adding volume_type="gp3" to compare costs
+
+    tags = {
+      Environment = "Prod"
+      Service = "web-app"
+    }
   }
 }
 
@@ -28,8 +33,11 @@ resource "aws_lambda_function" "my_hello_world" {
   function_name = "test"
   role = "arn:aws:ec2:us-east-1:123123123123:instance/i-1231231231"
 
+  architectures = ["arm64"]
+
   memory_size = 512
   tags = {
     Environment = "Prod"
+    Service = "web-app"
   }
 }
